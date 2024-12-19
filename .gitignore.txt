@@ -1,0 +1,13 @@
+# Node modules (Angular)
+TESTcmc/node_modules/
+TESTcmc/dist/
+
+# Java build files (Spring Boot)
+springapp/target/
+
+# IntelliJ IDEA (if you're using it)
+.idea/
+
+# Eclipse (if you're using it)
+.project
+.classpath

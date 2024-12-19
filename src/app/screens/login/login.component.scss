@@ -1,0 +1,133 @@
+/* General Styles */
+html, body {
+  font-family: 'Tajwal', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; /* Ensure full height for vertical centering */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  background-color: #f4f4f4;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* Ensure container takes full height */
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px; /* Set the max width for the card */
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  box-sizing: border-box;
+  margin: 20px; /* Add margin between cards */
+}
+
+.card h2 {
+  margin-bottom: 20px;
+  color: #333;
+  word-wrap: break-word;
+}
+
+/* Input Styles */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+    padding: 10px 40px; /* Add space for the icons */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    background-color: #f7f7f7;
+    transition: all 0.3s;
+    box-sizing: border-box;
+  }
+
+  input:focus {
+    background-color: #fff;
+    border-color: #007bff;
+  }
+
+  /* Style for animated icons */
+  .icon {
+    position: absolute;
+    left: 10px; /* Align icon to the left */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust size of the icons */
+    height: 20px;
+    pointer-events: none; /* Prevent the icon from blocking input focus */
+    animation: bounce 1.5s infinite; /* Add bounce animation */
+  }
+}
+
+/* Button Styles */
+button {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(-55%); /* Slight upward bounce */
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+    max-width: 90%; /* Adjust card width for smaller screens */
+  }
+
+  .input-wrapper input {
+    padding: 12px 35px;
+  }
+
+  button {
+    padding: 12px 20px;
+  }
+}

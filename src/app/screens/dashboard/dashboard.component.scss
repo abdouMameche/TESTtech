@@ -1,0 +1,567 @@
+.dashboard {
+  font-family: 'Tajawal', sans-serif;
+  padding: 10px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+    }
+    .center-section {
+      display: flex;
+      justify-content: center;
+      flex: 2;
+    }
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex: 1;
+      justify-content: flex-end;
+    }
+    .user-info {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .language-selector {
+      position: relative;
+      cursor: pointer;
+      .language-icon {
+        width: 40px;
+        height: 40px;
+      }
+      .language-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        width: 100px;
+        z-index: 1;
+        ul {
+          list-style: none;
+          margin: 0;
+          color: black;
+          padding: 0;
+          li {
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+            &:hover {
+              background-color: #007bff;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+    .search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      .search-icon {
+        position: absolute;
+        left: 10px;
+        width: 20px;
+        height: 20px;
+        animation: bounce 1.5s infinite;
+      }
+      input {
+        padding: 8px 12px 8px 40px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        font-size: 14px;
+        transition: border 0.3s, transform 0.3s;
+        color: black;
+        background: white;
+      }
+      input:focus {
+        border: 1px solid #007bff;
+        outline: none;
+        transform: scale(1.05);
+      }
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+    .logout-icon {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn i {
+  margin-right: 8px;
+}
+.confirm-btn {
+  background: #4caf50;
+  color: #fff;
+}
+.confirm-btn:hover {
+  background: #45a049;
+}
+.cancel-btn {
+  background: #f44336;
+  color: #fff;
+}
+.cancel-btn:hover {
+  background: #d32f2f;
+}
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    .user-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      width: 100%;
+      .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .card-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          .user-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+          }
+          .username {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+          }
+          .role {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+          }
+          .username:hover {
+            color: #007bff;
+          }
+        }
+        .card-actions {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          .action-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            &.delete {
+              background: #ff4747;
+            }
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+      .add-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #f4f4f4;
+        border: 2px dashed #007bff;
+        cursor: pointer;
+        transition: background 0.3s;
+        &:hover {
+          background: #e6f7ff;
+        }
+        .icon {
+          font-size: 24px;
+          color: #007bff;
+          font-weight: bold;
+        }
+        .add-text {
+          margin-top: 10px;
+          font-size: 14px;
+          color: #007bff;
+        }
+      }
+    }
+  }
+@media (max-width: 600px) {
+  .confirmation-card {
+    padding: 20px;
+    .confirmation-text {
+      font-size: 1.1rem;
+    }
+    .confirmation-actions {
+      flex-direction: column;
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
+  .add-user-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+
+
+  
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+
+      div {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+
+        input,
+        select {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+
+        &:hover {
+          background: #0056b3;
+        }
+      }
+
+      button[type="button"] {
+        background: #ff4747;
+        &:hover {
+          background: #ff1212;
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+  
+
+    .body {
+      flex-direction: column;
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .add-user-form {
+      margin: 10px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    
+
+    .add-user-form {
+      max-width: 90%; // Make the form more responsive on small screens
+      margin-top: 15px;
+    }
+
+    .user-cards {
+      grid-template-columns: 1fr; // Display one card per row on smaller screens
+    }
+  }
+}
+.confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Tajawal', sans-serif; /* Use Tajawal font */
+
+  .confirmation-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 360px;
+    padding: 20px;
+    text-align: center;
+
+    .confirmation-icon {
+      font-size: 48px;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .confirmation-text {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .confirmation-actions {
+      display: flex;
+      justify-content: space-evenly;
+
+      .btn {
+        background: #ff4747;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.3s;
+
+        &:hover {
+          background: #ff1212;
+          transform: scale(1.05);
+        }
+
+        &.confirm-btn {
+          background: #007bff;; /* White background for "No" */
+          color: white; /* Blue text for "No" */
+          
+        
+          border: none;
+          padding: 8px 12px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: bold;
+          transition: background 0.3s, transform 0.3s;
+  
+          &:hover {
+            background: #109bff;
+            transform: scale(1.05);
+          }
+
+          
+        }
+
+        &.cancel-btn {
+          background: #ff4747; /* Red background for "Yes" */
+          color: white;
+          border: none;
+
+          &:hover {
+            background: #ff1212; /* Darker red on hover */
+          }
+        }
+
+        i.material-icons {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+.updateform-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  font-family: 'Tajawal', sans-serif; /* Use Tajawal font */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .updateform-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+      }
+
+      input,
+      select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.confirm-btn {
+          background:  #007bff;
+          color: #fff;
+        }
+        
+        &.confirm-btn:hover {
+          background:  #007bff;
+        }
+        
+        &.cancel-btn {
+          background:   #ff4747;;
+          color: #fff;
+         
+        }
+        
+        &.cancel-btn:hover {
+          background: #d32f2f;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 15px;
+
+    .left-section,
+    .center-section,
+    .right-section {
+      gap: 15px; // Reduce gaps between sections
+    }
+
+    .search-bar {
+      width: 60%; // Slightly narrower search bar
+    }
+
+    .language-icon
+    {
+      width: 20px; // Smaller icon size for small screens
+      height: 20px;
+    }
+    .logout-icon {
+      width: 2px; // Smaller icon size for small screens
+      height: 2px;
+    }
+
+    .center-section {
+      flex: 1.5; // Adjust flex to center the search bar
+    }
+
+    .left-section,
+    .right-section {
+      flex: 1.5; // Adjust flex for spacing
+    }
+    .user-info{
+      display: none;
+    }
+    .right-section{
+      display: none;
+    }
+    .search-bar{
+      margin-left: -50%;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+<div class="dashboard">
+  <header class="header">
+    <div class="left-section">
+      <div class="user-info">{{ userName }}</div>
+    </div>
+    
+    <div class="center-section">
+      <div class="search-bar">
+        <img src="assets/search.png" alt="Search Icon" class="search-icon" />
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          placeholder="Search..."
+        />
+      </div>
+    </div>
+    
+    <div class="right-section">
+      <div class="language-selector" (click)="toggleLanguageDropdown()">
+        <img src="assets/lng.png" alt="Language Icon" class="language-icon" />
+        <div *ngIf="isDropdownOpen" class="language-dropdown">
+          <ul>
+            <li (click)="changeLanguage('ar')">Arabic</li>
+            <li (click)="changeLanguage('fr')">French</li>
+            <li (click)="changeLanguage('en')">English</li>
+          </ul>
+        </div>
+      </div>
+      <img src="assets/logout.png" alt="Logout Icon" class="logout-icon" (click)="confirmLogout()" />
+    </div>
+  </header>
+  
+  <div class="body">
+    <div class="user-cards">
+      <div class="card" *ngFor="let user of users">
+        <div class="card-content">
+          <img src="assets/iconUser.png" alt="User Icon" class="user-icon" />
+          <span class="username">{{ user.userName }}</span>
+          <span class="role">{{ user.role }}</span>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn update" (click)="editUser(user)">Update</button>
+          <button class="action-btn delete" (click)="confirmDeleteUser(user)">Delete</button>
+        </div>
+      </div>
+
+      <div class="card add-card" (click)="addNewUser()">
+        <span class="icon">+</span>
+        <span class="add-text">Add New User</span>
+      </div>
+    </div>
+
+    <div *ngIf="showAddUserForm" class="add-user-form">
+      <form (ngSubmit)="confirmSubmitUserForm()">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" [(ngModel)]="newUser.userName" name="userName" required />
+        </div>
+        <div>
+          <label for="role">Role:</label>
+          <select [(ngModel)]="newUser.role" name="role" id="role">
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+          </select>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" (click)="cancelAddUser()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showConfirmationModal" class="confirmation-overlay">
+  <div class="confirmation-card">
+    <div class="confirmation-icon">
+      <i class="material-icons">{{ confirmationIcon }}</i>
+    </div>
+    <div class="confirmation-text">
+      <p>{{ confirmationMessage }}</p>
+    </div>
+    <div class="confirmation-actions">
+      <button class="btn confirm-btn" (click)="confirmAction(true)">
+        <i class="material-icons"></i> Yes
+      </button>
+      <button class="btn cancel-btn" (click)="confirmAction(false)">
+        <i class="material-icons"></i> No
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showEditUserForm" class="updateform-overlay">
+  <div class="updateform-card">
+    <h2>Edit User</h2>
+    <form (ngSubmit)="confirmUpdateUser()">
+      <div>
+        <label for="edit-username">Username:</label>
+        <input
+          type="text"
+          id="edit-username"
+          [(ngModel)]="editUserForm.userName"
+          name="userName"
+          required
+        />
+      </div>
+      <div>
+        <label for="edit-password">Password:</label>
+        <input
+          type="password"
+          id="edit-password"
+          [(ngModel)]="editUserForm.password"
+          name="password"
+          required
+        />
+      </div>
+      <div>
+        <label for="edit-role">Role:</label>
+        <select [(ngModel)]="editUserForm.role" name="role" id="edit-role">
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn confirm-btn">Save</button>
+      <button
+        type="button"
+        class="btn cancel-btn"
+        (click)="cancelEditUser()"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>

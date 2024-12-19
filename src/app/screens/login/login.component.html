@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <!-- Email Input -->
+      <div class="input-wrapper">
+        <img src="assets/user.png" alt="User Icon" class="icon" />
+        <input
+          type="email"
+          placeholder="Email"
+          [(ngModel)]="loginData.email"
+          name="email"
+          (focus)="hideIcon($event)"
+          (blur)="showIcon($event)"
+          required
+        />
+      </div>
+
+      <!-- Password Input -->
+      <div class="input-wrapper">
+        <img src="assets/pass.png" alt="Password Icon" class="icon" />
+        <input
+          type="password"
+          placeholder="Password"
+          [(ngModel)]="loginData.password"
+          name="password"
+          (focus)="hideIcon($event)"
+          (blur)="showIcon($event)"
+          required
+        />
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
